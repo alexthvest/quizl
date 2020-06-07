@@ -11,7 +11,7 @@
         <v-toolbar-title>Новый опрос</v-toolbar-title>
         <v-spacer></v-spacer>
 
-        <v-btn depressed @click="questionDialogVisible = true">Добавить вопрос</v-btn>
+        <v-btn class="mr-2" depressed @click="questionDialogVisible = true">Добавить вопрос</v-btn>
         <QuestionDialog
           :visible="questionDialogVisible"
           :model="questionDialogModel"
@@ -20,6 +20,7 @@
         ></QuestionDialog>
 
         <v-btn
+          class="mr-2"
           depressed
           @click="$emit('save')"
           :disabled="!model.title || !model.title.trim()"

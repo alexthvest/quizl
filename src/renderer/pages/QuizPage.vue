@@ -3,7 +3,12 @@
     <v-toolbar dark>
       <v-toolbar-title>{{ item.title }}</v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn depressed @click="nextQuestion" :disabled="this.selectedIndex === -1">Следующий вопрос</v-btn>
+      <v-btn
+        depressed
+        @click="nextQuestion"
+        v-show="this.index + 1 < item.questions.length"
+        :disabled="this.selectedIndex === -1"
+      >Следующий вопрос</v-btn>
       <v-btn depressed @click="$router.go(-1)">Закрыть</v-btn>
     </v-toolbar>
     <v-container>

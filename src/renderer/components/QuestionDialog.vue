@@ -12,11 +12,12 @@
         <v-spacer></v-spacer>
 
         <v-btn
+          class="mr-2"
           depressed
           @click="$emit('save')"
           :disabled="!model.title || !model.title.trim()"
         >Сохранить</v-btn>
-        <v-btn depressed @click="$emit('cancel')">Закрыть</v-btn>
+        <v-btn depressed @click="cancel">Закрыть</v-btn>
       </v-toolbar>
       <v-container>
         <v-text-field label="Вопрос" v-model="model.title" outlined hide-details></v-text-field>
@@ -25,7 +26,7 @@
             <v-text-field label="Ответ" v-model="answerTitle" outlined hide-details></v-text-field>
           </v-col>
           <v-col sm="3">
-            <v-btn large dark @click="addAnswer">Добавить ответ</v-btn>
+            <v-btn large dark @click="addAnswer">{{ answerId ? 'Сохранить' : 'Добавить ответ' }}</v-btn>
           </v-col>
         </v-row>
       </v-container>
@@ -75,6 +76,11 @@ export default {
     },
     removeAnswer(item) {
       this.model.answers = this.model.answers.filter(a => a.id !== item.id)
+    },
+    cancel() {
+      this.answerTitle = ''
+      this.answerId = ''
+      this.$emit('cancel')
     }
   }
 }
