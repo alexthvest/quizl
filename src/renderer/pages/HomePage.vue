@@ -38,7 +38,7 @@ export default {
     },
     loading: true
   }),
-  beforeMount() {
+  beforeCreate() {
     this.$ipc.send('app:started')
 
     this.$ipc.on('data:loaded', (e, items) => {

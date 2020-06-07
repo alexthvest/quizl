@@ -16,7 +16,7 @@
   },
   "build": {
     "productName": "test-app",
-    "appId": "net.alexthvest.quizapp",
+    "appId": "net.alexthvest.quizl",
     "directories": {
       "output": "build"
     },
@@ -38,14 +38,11 @@
         }
       ]
     },
-    "mac": {
-      "icon": "build/icons/icon.icns"
-    },
     "win": {
-      "icon": "build/icons/icon.ico"
-    },
-    "linux": {
-      "icon": "build/icons"
+      "icon": "build/icons/icon.ico",
+      "target": [
+        "portable"
+      ]
     }
   },
   "dependencies": {

@@ -13,7 +13,12 @@
           </v-list-item-content>
 
           <v-list-item-action>
-            <v-btn depressed dark @click="$emit('start', item)">Начать</v-btn>
+            <v-btn
+              depressed
+              dark
+              @click="$emit('start', item)"
+              :disabled="!(item.questions.length && item.questions.every(q => q.answers.length && q.answers.some(a => a.right)))"
+            >Начать</v-btn>
           </v-list-item-action>
           <v-list-item-action>
             <v-btn depressed @click="$emit('edit', item)">Редактировать</v-btn>
