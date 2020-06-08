@@ -7,8 +7,7 @@
         depressed
         @click="nextQuestion"
         v-show="this.index + 1 < item.questions.length"
-        :disabled="this.selectedIndex === -1"
-      >Следующий вопрос</v-btn>
+      >{{ this.selectedIndex === -1 ? 'Пропустить' : 'Следующий вопрос' }}</v-btn>
       <v-btn depressed @click="$router.go(-1)">Закрыть</v-btn>
     </v-toolbar>
     <v-container>
@@ -17,7 +16,7 @@
         <v-list-item
           v-for="(answer, index) in question.answers"
           :key="answer.title"
-          :class="{'green': index === rightIndex, 'red': selectedIndex == index && selectedIndex !== -1 && index !== rightIndex}"
+          :class="{'green': index === rightIndex, 'red': selectedIndex === index && index !== rightIndex}"
           @click="selectAnswer(answer, index)"
         >
           <v-list-item-content>

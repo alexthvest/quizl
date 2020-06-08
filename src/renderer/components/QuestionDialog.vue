@@ -10,9 +10,7 @@
       <v-toolbar dark>
         <v-toolbar-title>Новый вопрос</v-toolbar-title>
         <v-spacer></v-spacer>
-
         <v-btn
-          class="mr-2"
           depressed
           @click="$emit('save')"
           :disabled="!model.title || !model.title.trim()"
@@ -26,7 +24,13 @@
             <v-text-field label="Ответ" v-model="answerTitle" outlined hide-details></v-text-field>
           </v-col>
           <v-col sm="3">
-            <v-btn large dark @click="addAnswer">{{ answerId ? 'Сохранить' : 'Добавить ответ' }}</v-btn>
+            <v-btn
+              large
+              dark
+              depressed
+              @click="addAnswer"
+              :disabled="!answerTitle.trim()"
+            >{{ answerId ? 'Сохранить' : 'Добавить ответ' }}</v-btn>
           </v-col>
         </v-row>
       </v-container>
