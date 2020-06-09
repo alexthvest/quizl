@@ -1,10 +1,17 @@
 import { Store } from 'data-store'
+import { join } from 'path'
+import { existsSync, writeFileSync } from 'fs'
 import { v4 as uuid } from 'uuid'
 
 export default class QuizService {
 
   constructor(cwd) {
-    this.store = new Store('quiz', { cwd })
+    const path = join(process.env.PORTABLE_EXECUTABLE_DIR, 'data.json')
+
+    if (!existsSync(path))
+      writeFileSync(path, JSON.stringify({ items: [] }))
+
+    this.store = new Store('data', { path })
   }
 
   getQuizes() {

@@ -15,7 +15,7 @@
     "postinstall": ""
   },
   "build": {
-    "productName": "test-app",
+    "productName": "Quizl",
     "appId": "net.alexthvest.quizl",
     "directories": {
       "output": "build"

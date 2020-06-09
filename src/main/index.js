@@ -5,7 +5,7 @@ if (process.env.NODE_ENV !== 'development') {
   global.__static = require('path').join(__dirname, '/static').replace(/\\/g, '\\\\')
 }
 
-const quizService = new QuizService(app.getAppPath())
+const quizService = new QuizService(process.execPath)
 let mainWindow
 
 ipcMain.on('app:started', e => {
@@ -30,7 +30,7 @@ ipcMain.on('quiz:started', (e, id) => {
 
 function createWindow() {
   mainWindow = new BrowserWindow({
-    title: 'Quiz',
+    title: 'Quizl',
     width: 1000,
     height: 563,
     useContentSize: true,
